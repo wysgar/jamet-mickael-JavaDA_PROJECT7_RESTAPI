@@ -1,22 +1,40 @@
 package com.nnk.springboot.domain;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "users")
-public class User {
+public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
+    @Column(name = "id")
     private Integer id;
-    @NotBlank(message = "Username is mandatory")
+    
+    @Column(name = "username")
     private String username;
-    @NotBlank(message = "Password is mandatory")
+    
+    @Column(name = "password")
     private String password;
-    @NotBlank(message = "FullName is mandatory")
+    
+    @Column(name = "fullname")
     private String fullname;
-    @NotBlank(message = "Role is mandatory")
+    
+    @Column(name = "role")
     private String role;
+    
+    public User() {}
+    public User(String username, String password) {
+    	this.username = username;
+    	this.password = password;
+    }
 
     public Integer getId() {
         return id;
@@ -57,4 +75,33 @@ public class User {
     public void setRole(String role) {
         this.role = role;
     }
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority(this.role);
+		List<SimpleGrantedAuthority> autority = new ArrayList<>();
+		autority.add(simpleGrantedAuthority);
+		// TODO condition admin ou user
+		return autority;
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return true;
+	}
 }
