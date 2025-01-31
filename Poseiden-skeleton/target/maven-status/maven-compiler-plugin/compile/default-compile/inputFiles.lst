@@ -17,11 +17,13 @@ C:\Users\Mickaël\Documents\Formation OC\jamet-mickael-JavaDA_PROJECT7_RESTAPI\P
 C:\Users\Mickaël\Documents\Formation OC\jamet-mickael-JavaDA_PROJECT7_RESTAPI\Poseiden-skeleton\src\main\java\com\nnk\springboot\repositories\BidListRepository.java
 C:\Users\Mickaël\Documents\Formation OC\jamet-mickael-JavaDA_PROJECT7_RESTAPI\Poseiden-skeleton\src\main\java\com\nnk\springboot\domain\BidList.java
 C:\Users\Mickaël\Documents\Formation OC\jamet-mickael-JavaDA_PROJECT7_RESTAPI\Poseiden-skeleton\src\main\java\com\nnk\springboot\controllers\BidListController.java
+C:\Users\Mickaël\Documents\Formation OC\jamet-mickael-JavaDA_PROJECT7_RESTAPI\Poseiden-skeleton\src\main\java\com\nnk\springboot\config\PasswordConstraintValidator.java
 C:\Users\Mickaël\Documents\Formation OC\jamet-mickael-JavaDA_PROJECT7_RESTAPI\Poseiden-skeleton\src\main\java\com\nnk\springboot\domain\Trade.java
 C:\Users\Mickaël\Documents\Formation OC\jamet-mickael-JavaDA_PROJECT7_RESTAPI\Poseiden-skeleton\src\main\java\com\nnk\springboot\services\UserService.java
 C:\Users\Mickaël\Documents\Formation OC\jamet-mickael-JavaDA_PROJECT7_RESTAPI\Poseiden-skeleton\src\main\java\com\nnk\springboot\repositories\UserRepository.java
 C:\Users\Mickaël\Documents\Formation OC\jamet-mickael-JavaDA_PROJECT7_RESTAPI\Poseiden-skeleton\src\main\java\com\nnk\springboot\Application.java
 C:\Users\Mickaël\Documents\Formation OC\jamet-mickael-JavaDA_PROJECT7_RESTAPI\Poseiden-skeleton\src\main\java\com\nnk\springboot\domain\CurvePoint.java
+C:\Users\Mickaël\Documents\Formation OC\jamet-mickael-JavaDA_PROJECT7_RESTAPI\Poseiden-skeleton\src\main\java\com\nnk\springboot\config\ValidPassword.java
 C:\Users\Mickaël\Documents\Formation OC\jamet-mickael-JavaDA_PROJECT7_RESTAPI\Poseiden-skeleton\src\main\java\com\nnk\springboot\services\RuleNameService.java
 C:\Users\Mickaël\Documents\Formation OC\jamet-mickael-JavaDA_PROJECT7_RESTAPI\Poseiden-skeleton\src\main\java\com\nnk\springboot\controllers\RuleNameController.java
 C:\Users\Mickaël\Documents\Formation OC\jamet-mickael-JavaDA_PROJECT7_RESTAPI\Poseiden-skeleton\src\main\java\com\nnk\springboot\services\CurvePointService.java

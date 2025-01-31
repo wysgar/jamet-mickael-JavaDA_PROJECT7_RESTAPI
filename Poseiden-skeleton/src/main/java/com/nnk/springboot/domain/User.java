@@ -8,13 +8,15 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.nnk.springboot.config.ValidPassword;
+
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "users")
 public class User implements UserDetails {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
     
@@ -22,6 +24,7 @@ public class User implements UserDetails {
     private String username;
     
     @Column(name = "password")
+    @ValidPassword
     private String password;
     
     @Column(name = "fullname")
@@ -81,7 +84,6 @@ public class User implements UserDetails {
 		SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority(this.role);
 		List<SimpleGrantedAuthority> autority = new ArrayList<>();
 		autority.add(simpleGrantedAuthority);
-		// TODO condition admin ou user
 		return autority;
 	}
 

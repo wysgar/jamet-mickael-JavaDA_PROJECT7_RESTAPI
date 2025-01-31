@@ -1,6 +1,7 @@
 package com.nnk.springboot.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 import java.sql.Date;
@@ -14,10 +15,12 @@ public class BidList {
     private int id;
 	
     @NotNull
+    @NotBlank(message = "Account is mandatory")
 	@Column(name = "account")
     private String account;
     
     @NotNull
+    @NotBlank(message = "type is mandatory")
 	@Column(name = "type")
     private String type;
     

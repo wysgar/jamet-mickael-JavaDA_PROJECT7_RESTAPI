@@ -64,7 +64,11 @@ public class RuleNameControllerTest {
                 .with(csrf())
                 .with(user("testUser").roles("ADMIN"))
                 .param("name", "Rule1")
-                .param("description", "Description1"))
+                .param("description", "Description1")
+                .param("json", "json1")
+                .param("template", "template1")
+                .param("sqlStr", "sqlStr1")
+                .param("sqlPart", "sqlPart1"))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/ruleName/list"));
 
@@ -86,13 +90,15 @@ public class RuleNameControllerTest {
 
     @Test
     void testUpdateRuleName() throws Exception {
-        RuleName ruleName = new RuleName("Rule 1", "test", "json", "template", "sqlStr", "sqlPart");
-        when(ruleNameService.findById(1)).thenReturn(Optional.of(ruleName));
-
         mockMvc.perform(post("/ruleName/update/1")
                 .with(csrf())
                 .with(user("testUser").roles("ADMIN"))
-                .param("name", "Updated Rule Name"))
+                .param("name", "Updated Rule Name")
+                .param("description", "Description1")
+                .param("json", "json1")
+                .param("template", "template1")
+                .param("sqlStr", "sqlStr1")
+                .param("sqlPart", "sqlPart1"))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/ruleName/list"));
 

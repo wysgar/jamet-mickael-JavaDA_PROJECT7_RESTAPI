@@ -58,7 +58,7 @@ import jakarta.validation.Valid;
 <span class="nc" id="L58">            return &quot;curvePoint/update&quot;;</span>
         }
     	
-<span class="fc" id="L61">    	curvePoint.setCurveId(id);</span>
+<span class="fc" id="L61">    	curvePoint.setId(id);</span>
 <span class="fc" id="L62">        curvePointService.save(curvePoint);</span>
 <span class="fc" id="L63">        model.addAttribute(&quot;curvePoints&quot;, curvePointService.findAll());</span>
 <span class="fc" id="L64">        return &quot;redirect:/curvePoint/list&quot;;</span>

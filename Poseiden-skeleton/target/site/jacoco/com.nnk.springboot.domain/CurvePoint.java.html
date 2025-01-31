@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CurvePoint.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">spring-boot-skeleton</a> &gt; <a href="index.source.html" class="el_package">com.nnk.springboot.domain</a> &gt; <span class="el_source">CurvePoint.java</span></div><h1>CurvePoint.java</h1><pre class="source lang-java linenums">package com.nnk.springboot.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+
 import java.util.Date;
 
 @Entity
@@ -11,15 +13,16 @@ public class CurvePoint {
 	@Column(name = &quot;Id&quot;)
     private int id;
 	
+	@NotNull(message = &quot;must not be null&quot;)
 	@Column(name = &quot;CurveId&quot;)
-    private int curveId;
+    private Integer curveId;
 	
 	@Column(name = &quot;asOfDate&quot;)
     private Date asOfDate;
-	
+
 	@Column(name = &quot;term&quot;)
     private double term;
-	
+
 	@Column(name = &quot;value&quot;)
     private double value;
 	
@@ -27,48 +30,48 @@ public class CurvePoint {
     private Date creationDate;
     
     
-<span class="fc" id="L30">    public CurvePoint() {}</span>
-<span class="fc" id="L31">    public CurvePoint(int curveId, double term, double value) {</span>
-<span class="fc" id="L32">        this.curveId = curveId;</span>
-<span class="fc" id="L33">        this.term = term;</span>
-<span class="fc" id="L34">        this.value = value;</span>
-<span class="fc" id="L35">    }</span>
+<span class="fc" id="L33">    public CurvePoint() {}</span>
+<span class="fc" id="L34">    public CurvePoint(int curveId, double term, double value) {</span>
+<span class="fc" id="L35">        this.curveId = curveId;</span>
+<span class="fc" id="L36">        this.term = term;</span>
+<span class="fc" id="L37">        this.value = value;</span>
+<span class="fc" id="L38">    }</span>
 	public int getId() {
-<span class="fc" id="L37">		return id;</span>
+<span class="fc" id="L40">		return id;</span>
 	}
 	public void setId(int id) {
-<span class="fc" id="L40">		this.id = id;</span>
-<span class="fc" id="L41">	}</span>
-	public int getCurveId() {
-<span class="fc" id="L43">		return curveId;</span>
+<span class="fc" id="L43">		this.id = id;</span>
+<span class="fc" id="L44">	}</span>
+	public Integer getCurveId() {
+<span class="fc" id="L46">		return curveId;</span>
 	}
-	public void setCurveId(int curveId) {
-<span class="fc" id="L46">		this.curveId = curveId;</span>
-<span class="fc" id="L47">	}</span>
+	public void setCurveId(Integer curveId) {
+<span class="fc" id="L49">		this.curveId = curveId;</span>
+<span class="fc" id="L50">	}</span>
 	public Date getAsOfDate() {
-<span class="nc" id="L49">		return asOfDate;</span>
+<span class="nc" id="L52">		return asOfDate;</span>
 	}
 	public void setAsOfDate(Date asOfDate) {
-<span class="nc" id="L52">		this.asOfDate = asOfDate;</span>
-<span class="nc" id="L53">	}</span>
+<span class="nc" id="L55">		this.asOfDate = asOfDate;</span>
+<span class="nc" id="L56">	}</span>
 	public double getTerm() {
-<span class="fc" id="L55">		return term;</span>
+<span class="fc" id="L58">		return term;</span>
 	}
 	public void setTerm(double term) {
-<span class="fc" id="L58">		this.term = term;</span>
-<span class="fc" id="L59">	}</span>
+<span class="fc" id="L61">		this.term = term;</span>
+<span class="fc" id="L62">	}</span>
 	public double getValue() {
-<span class="fc" id="L61">		return value;</span>
+<span class="fc" id="L64">		return value;</span>
 	}
 	public void setValue(double value) {
-<span class="fc" id="L64">		this.value = value;</span>
-<span class="fc" id="L65">	}</span>
+<span class="fc" id="L67">		this.value = value;</span>
+<span class="fc" id="L68">	}</span>
 	public Date getCreationDate() {
-<span class="nc" id="L67">		return creationDate;</span>
+<span class="nc" id="L70">		return creationDate;</span>
 	}
 	public void setCreationDate(Date creationDate) {
-<span class="nc" id="L70">		this.creationDate = creationDate;</span>
-<span class="nc" id="L71">	}</span>
+<span class="nc" id="L73">		this.creationDate = creationDate;</span>
+<span class="nc" id="L74">	}</span>
     
     
 }

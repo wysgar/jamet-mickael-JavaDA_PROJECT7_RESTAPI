@@ -22,14 +22,16 @@ public class SpringSecurityConfig {
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
 		http.authorizeHttpRequests(auth -> {
-			auth.requestMatchers("/").permitAll();
+			auth.requestMatchers("/", "/css/bootstrap.min.css").permitAll()
+	        .requestMatchers("/user/**").hasAuthority("ADMIN");
 			auth.anyRequest().authenticated();
 		})
 		.formLogin(form -> form
+				.loginPage("/app/login")
                 .defaultSuccessUrl("/bidList/list", true)
 				.permitAll())
-		.logout((logout) -> 
-				logout.permitAll());
+		.logout((logout) -> logout
+				.logoutUrl("/app-logout").logoutSuccessUrl("/login"));
 		
 		return http.build();
 	}

@@ -8,13 +8,15 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.nnk.springboot.config.ValidPassword;
+
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = &quot;users&quot;)
 public class User implements UserDetails {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name = &quot;id&quot;)
     private Integer id;
     
@@ -22,6 +24,7 @@ public class User implements UserDetails {
     private String username;
     
     @Column(name = &quot;password&quot;)
+    @ValidPassword
     private String password;
     
     @Column(name = &quot;fullname&quot;)
@@ -30,79 +33,78 @@ public class User implements UserDetails {
     @Column(name = &quot;role&quot;)
     private String role;
     
-<span class="fc" id="L33">    public User() {}</span>
-<span class="fc" id="L34">    public User(String username, String password) {</span>
-<span class="fc" id="L35">    	this.username = username;</span>
-<span class="fc" id="L36">    	this.password = password;</span>
-<span class="fc" id="L37">    }</span>
+<span class="fc" id="L36">    public User() {}</span>
+<span class="fc" id="L37">    public User(String username, String password) {</span>
+<span class="fc" id="L38">    	this.username = username;</span>
+<span class="fc" id="L39">    	this.password = password;</span>
+<span class="fc" id="L40">    }</span>
 
     public Integer getId() {
-<span class="fc" id="L40">        return id;</span>
+<span class="fc" id="L43">        return id;</span>
     }
 
     public void setId(Integer id) {
-<span class="fc" id="L44">        this.id = id;</span>
-<span class="fc" id="L45">    }</span>
+<span class="fc" id="L47">        this.id = id;</span>
+<span class="fc" id="L48">    }</span>
 
     public String getUsername() {
-<span class="fc" id="L48">        return username;</span>
+<span class="fc" id="L51">        return username;</span>
     }
 
     public void setUsername(String username) {
-<span class="fc" id="L52">        this.username = username;</span>
-<span class="fc" id="L53">    }</span>
+<span class="fc" id="L55">        this.username = username;</span>
+<span class="fc" id="L56">    }</span>
 
     public String getPassword() {
-<span class="fc" id="L56">        return password;</span>
+<span class="fc" id="L59">        return password;</span>
     }
 
     public void setPassword(String password) {
-<span class="fc" id="L60">        this.password = password;</span>
-<span class="fc" id="L61">    }</span>
+<span class="fc" id="L63">        this.password = password;</span>
+<span class="fc" id="L64">    }</span>
 
     public String getFullname() {
-<span class="fc" id="L64">        return fullname;</span>
+<span class="fc" id="L67">        return fullname;</span>
     }
 
     public void setFullname(String fullname) {
-<span class="fc" id="L68">        this.fullname = fullname;</span>
-<span class="fc" id="L69">    }</span>
+<span class="fc" id="L71">        this.fullname = fullname;</span>
+<span class="fc" id="L72">    }</span>
 
     public String getRole() {
-<span class="fc" id="L72">        return role;</span>
+<span class="fc" id="L75">        return role;</span>
     }
 
     public void setRole(String role) {
-<span class="fc" id="L76">        this.role = role;</span>
-<span class="fc" id="L77">    }</span>
+<span class="fc" id="L79">        this.role = role;</span>
+<span class="fc" id="L80">    }</span>
 
 	@Override
 	public Collection&lt;? extends GrantedAuthority&gt; getAuthorities() {
-<span class="nc" id="L81">		SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority(this.role);</span>
-<span class="nc" id="L82">		List&lt;SimpleGrantedAuthority&gt; autority = new ArrayList&lt;&gt;();</span>
-<span class="nc" id="L83">		autority.add(simpleGrantedAuthority);</span>
-		// TODO condition admin ou user
-<span class="nc" id="L85">		return autority;</span>
+<span class="nc" id="L84">		SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority(this.role);</span>
+<span class="nc" id="L85">		List&lt;SimpleGrantedAuthority&gt; autority = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L86">		autority.add(simpleGrantedAuthority);</span>
+<span class="nc" id="L87">		return autority;</span>
 	}
 
 	@Override
 	public boolean isAccountNonExpired() {
-<span class="nc" id="L90">		return true;</span>
+<span class="nc" id="L92">		return true;</span>
 	}
 
 	@Override
 	public boolean isAccountNonLocked() {
-<span class="nc" id="L95">		return true;</span>
+<span class="nc" id="L97">		return true;</span>
 	}
 
 	@Override
 	public boolean isCredentialsNonExpired() {
-<span class="nc" id="L100">		return true;</span>
+<span class="nc" id="L102">		return true;</span>
 	}
 
 	@Override
 	public boolean isEnabled() {
-<span class="nc" id="L105">		return true;</span>
+<span class="nc" id="L107">		return true;</span>
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

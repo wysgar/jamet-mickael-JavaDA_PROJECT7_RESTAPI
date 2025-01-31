@@ -1,6 +1,7 @@
 package com.nnk.springboot.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "rating")
@@ -9,13 +10,16 @@ public class Rating {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "Id")
     private int id;
-	
+
+    @NotBlank(message = "MoodysRating is mandatory")
 	@Column(name = "moodysRating")
     private String moodysRating;
-	
+
+    @NotBlank(message = "SandPRating is mandatory")
 	@Column(name = "sandPRating")
     private String sandPRating;
-	
+
+    @NotBlank(message = "FitchRating is mandatory")
 	@Column(name = "fitchRating")
     private String fitchRating;
 	

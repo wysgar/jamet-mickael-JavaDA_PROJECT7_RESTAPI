@@ -1,6 +1,8 @@
 package com.nnk.springboot.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+
 import java.util.Date;
 
 @Entity
@@ -11,15 +13,16 @@ public class CurvePoint {
 	@Column(name = "Id")
     private int id;
 	
+	@NotNull(message = "must not be null")
 	@Column(name = "CurveId")
-    private int curveId;
+    private Integer curveId;
 	
 	@Column(name = "asOfDate")
     private Date asOfDate;
-	
+
 	@Column(name = "term")
     private double term;
-	
+
 	@Column(name = "value")
     private double value;
 	
@@ -39,10 +42,10 @@ public class CurvePoint {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getCurveId() {
+	public Integer getCurveId() {
 		return curveId;
 	}
-	public void setCurveId(int curveId) {
+	public void setCurveId(Integer curveId) {
 		this.curveId = curveId;
 	}
 	public Date getAsOfDate() {

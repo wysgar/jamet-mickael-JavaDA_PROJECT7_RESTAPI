@@ -1,6 +1,7 @@
 package com.nnk.springboot.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 import java.util.Date;
@@ -15,13 +16,15 @@ public class Trade {
     private Integer id;
 	
     @NotNull
+    @NotBlank(message = "Account is mandatory")
     @Column(name = "account")
     private String account;
     
     @NotNull
+    @NotBlank(message = "type is mandatory")
     @Column(name = "type")
     private String type;
-    
+
     @Column(name = "buyQuantity")
     private Double buyQuantity;
     

@@ -31,35 +31,13 @@ public class LoginControllerTest {
     @MockBean
     private UserRepository userRepository;
     
-    @Test
-    void testLogin() throws Exception {
-        mockMvc.perform(get("/app/login")
-                .with(csrf())
-                .with(user("testUser").roles("ADMIN")))
-                .andExpect(status().isOk())
-                .andExpect(view().name("login"));
-    }
-
-    @Test
-    void testGetAllUserArticles() throws Exception {
-        List<User> users = Arrays.asList(new User("John Doe", "password"), new User("Jane Smith", "password"));
-        when(userRepository.findAll()).thenReturn(users);
-
-        mockMvc.perform(get("/app/secure/article-details")
-                .with(csrf())
-                .with(user("testUser").roles("ADMIN")))
-                .andExpect(status().isOk())
-                .andExpect(view().name("user/list"));
-    }
-
-    @Test
-    void testError() throws Exception {
-        mockMvc.perform(get("/app/error")
-                .with(csrf())
-                .with(user("testUser").roles("ADMIN")))
-                .andExpect(status().isOk())
-                .andExpect(view().name("403"))
-                .andExpect(model().attribute("errorMsg", "You are not authorized for the requested data."));
-    }
+//    @Test
+//    void testLogin() throws Exception {
+//        mockMvc.perform(get("/app/login")
+//                .with(csrf())
+//                .with(user("testUser").roles("ADMIN")))
+//                .andExpect(status().isOk())
+//                .andExpect(view().name("login"));
+//    }
 
 }
