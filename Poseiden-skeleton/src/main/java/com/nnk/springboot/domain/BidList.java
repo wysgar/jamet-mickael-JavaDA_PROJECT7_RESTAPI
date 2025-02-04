@@ -1,10 +1,10 @@
 package com.nnk.springboot.domain;
 
+import java.util.Date;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-
-import java.sql.Date;
 
 @Entity
 @Table(name = "bidlist")

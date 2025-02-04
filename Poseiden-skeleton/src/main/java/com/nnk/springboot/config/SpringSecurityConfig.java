@@ -12,13 +12,25 @@ import org.springframework.security.web.SecurityFilterChain;
 
 import com.nnk.springboot.services.UserService;
 
-
+/**
+ * Configuration class for Spring Security settings.
+ * Defines authentication and authorization rules for the application.
+ */
 @Configuration
 @EnableWebSecurity
 public class SpringSecurityConfig {
+	
+	/** User service for authentication. */
 	@Autowired
 	private UserService userService;
 
+	/**
+     * Configures security filters and authorization rules.
+     *
+     * @param http the {@link HttpSecurity} instance to configure
+     * @return the configured {@link SecurityFilterChain}
+     * @throws Exception if an error occurs during configuration
+     */
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
 		http.authorizeHttpRequests(auth -> {
@@ -36,11 +48,24 @@ public class SpringSecurityConfig {
 		return http.build();
 	}
 	
+	/**
+     * Provides a password encoder using BCrypt.
+     *
+     * @return a {@link BCryptPasswordEncoder} instance
+     */
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
 	
+	/**
+     * Configures the authentication manager with the user details service and password encoder.
+     *
+     * @param http the {@link HttpSecurity} instance
+     * @param bCryptPasswordEncoder the password encoder
+     * @return the configured {@link AuthenticationManager}
+     * @throws Exception if an error occurs during configuration
+     */
 	@Bean
 	public AuthenticationManager authenticationManager(HttpSecurity http, BCryptPasswordEncoder bCryptPasswordEncoder) throws Exception {
 		AuthenticationManagerBuilder authenticationManagerBuilder = http.getSharedObject(AuthenticationManagerBuilder.class);

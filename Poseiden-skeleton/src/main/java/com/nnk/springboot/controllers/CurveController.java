@@ -4,6 +4,7 @@ import com.nnk.springboot.domain.CurvePoint;
 import com.nnk.springboot.services.CurvePointService;
 
 import java.security.Principal;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,6 +38,7 @@ public class CurveController {
     @PostMapping("/curvePoint/validate")
     public String validate(@Valid CurvePoint curvePoint, BindingResult result, Model model) {
     	if (!result.hasErrors()) {
+    		curvePoint.setCreationDate(new Date());
             curvePointService.save(curvePoint);
             model.addAttribute("curvePoints", curvePointService.findAll());
             return "redirect:/curvePoint/list";

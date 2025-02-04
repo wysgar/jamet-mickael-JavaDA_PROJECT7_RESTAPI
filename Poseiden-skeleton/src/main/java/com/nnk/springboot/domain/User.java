@@ -13,6 +13,10 @@ import com.nnk.springboot.config.ValidPassword;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
+/**
+ * Entity class representing a user in the system.
+ * Implements {@link UserDetails} for integration with Spring Security.
+ */
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "users")
@@ -84,6 +88,12 @@ public class User implements UserDetails {
         this.role = role;
     }
 
+    /**
+     * Returns the authorities granted to the user.
+     * This method is used by Spring Security.
+     *
+     * @return a collection of {@link GrantedAuthority} objects
+     */
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority(this.role);
@@ -92,21 +102,33 @@ public class User implements UserDetails {
 		return autority;
 	}
 
+	/**
+     * Indicates whether the user's account has expired.
+     */
 	@Override
 	public boolean isAccountNonExpired() {
 		return true;
 	}
 
+	/**
+     * Indicates whether the user is locked or unlocked.
+     */
 	@Override
 	public boolean isAccountNonLocked() {
 		return true;
 	}
 
+	/**
+     * Indicates whether the user's credentials (password) have expired.
+     */
 	@Override
 	public boolean isCredentialsNonExpired() {
 		return true;
 	}
 
+	/**
+     * Indicates whether the user is enabled or disabled.
+     */
 	@Override
 	public boolean isEnabled() {
 		return true;

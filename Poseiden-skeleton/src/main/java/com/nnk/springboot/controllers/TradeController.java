@@ -4,6 +4,7 @@ import com.nnk.springboot.domain.Trade;
 import com.nnk.springboot.services.TradeService;
 
 import java.security.Principal;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,6 +38,7 @@ public class TradeController {
     @PostMapping("/trade/validate")
     public String validate(@Valid Trade trade, BindingResult result, Model model) {
     	if (!result.hasErrors()) {
+    		trade.setCreationDate(new Date());
     		tradeService.save(trade);
             model.addAttribute("trades", tradeService.findAll());
             return "redirect:/trade/list";
