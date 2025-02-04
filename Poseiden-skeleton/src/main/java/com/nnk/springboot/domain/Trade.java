@@ -25,6 +25,7 @@ public class Trade {
     @Column(name = "type")
     private String type;
 
+    @NotNull(message = "must not be null")
     @Column(name = "buyQuantity")
     private Double buyQuantity;
     
@@ -80,9 +81,10 @@ public class Trade {
     private String side;
     
     public Trade() { }
-    public Trade(String account, String type) {
+    public Trade(String account, String type, Double buyQuantity) {
         this.type = type;
         this.account = account;
+        this.buyQuantity = buyQuantity;
     }
     
 	public Integer getId() {

@@ -11,7 +11,7 @@ public class CurvePoint {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "Id")
-    private int id;
+    private Integer id;
 	
 	@NotNull(message = "must not be null")
 	@Column(name = "CurveId")
@@ -19,27 +19,29 @@ public class CurvePoint {
 	
 	@Column(name = "asOfDate")
     private Date asOfDate;
-
+	
+	@NotNull(message = "must not be null")
 	@Column(name = "term")
-    private double term;
+    private Double term;
 
+	@NotNull(message = "must not be null")
 	@Column(name = "value")
-    private double value;
+    private Double value;
 	
 	@Column(name = "creationDate")
     private Date creationDate;
     
     
     public CurvePoint() {}
-    public CurvePoint(int curveId, double term, double value) {
+    public CurvePoint(Integer curveId, Double term, Double value) {
         this.curveId = curveId;
         this.term = term;
         this.value = value;
     }
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public Integer getCurveId() {
@@ -54,16 +56,16 @@ public class CurvePoint {
 	public void setAsOfDate(Date asOfDate) {
 		this.asOfDate = asOfDate;
 	}
-	public double getTerm() {
+	public Double getTerm() {
 		return term;
 	}
-	public void setTerm(double term) {
+	public void setTerm(Double term) {
 		this.term = term;
 	}
-	public double getValue() {
+	public Double getValue() {
 		return value;
 	}
-	public void setValue(double value) {
+	public void setValue(Double value) {
 		this.value = value;
 	}
 	public Date getCreationDate() {

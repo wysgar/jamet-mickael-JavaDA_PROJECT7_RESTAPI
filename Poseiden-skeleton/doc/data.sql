@@ -95,6 +95,5 @@ CREATE TABLE Users (
   PRIMARY KEY (Id)
 );
 
-insert into Users(fullname, username, password, role) values("Administrator", "admin2", "$2y$10$fAHiO/355XDOm9CQO5.x4eqjSCXmNHwnmY4I1QaCtU.ErxnDRiymS", "ADMIN");
-insert into Users(fullname, username, password, role) values("Administrator", "admin", "$2a$10$pBV8ILO/s/nao4wVnGLrh.sa/rnr5pDpbeC4E.KNzQWoy8obFZdaa", "ADMIN");
-insert into Users(fullname, username, password, role) values("User", "user", "$2a$10$pBV8ILO/s/nao4wVnGLrh.sa/rnr5pDpbeC4E.KNzQWoy8obFZdaa", "USER");
+insert into Users(fullname, username, password, role) values("Administrator", "admin", "$2y$10$fAHiO/355XDOm9CQO5.x4eqjSCXmNHwnmY4I1QaCtU.ErxnDRiymS", "ADMIN"); /* mdp : admin */
+insert into Users(fullname, username, password, role) values("User", "user", "$2y$10$6L01.9ap8WUmjKIHJXM2J.wwVKZLCcnL58DfAVi/0V.B2Zi3wlC7y", "USER"); /* mdp : user */

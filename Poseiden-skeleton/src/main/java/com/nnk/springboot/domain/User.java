@@ -11,6 +11,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import com.nnk.springboot.config.ValidPassword;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "users")
@@ -19,17 +20,20 @@ public class User implements UserDetails {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
-    
+
+    @NotBlank(message = "Username is mandatory")
     @Column(name = "username")
     private String username;
     
     @Column(name = "password")
     @ValidPassword
     private String password;
-    
+
+    @NotBlank(message = "Fullname is mandatory")
     @Column(name = "fullname")
     private String fullname;
-    
+
+    @NotBlank(message = "Role is mandatory")
     @Column(name = "role")
     private String role;
     

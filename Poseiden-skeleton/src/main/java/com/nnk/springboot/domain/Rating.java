@@ -2,6 +2,7 @@ package com.nnk.springboot.domain;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "rating")
@@ -9,7 +10,7 @@ public class Rating {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "Id")
-    private int id;
+    private Integer id;
 
     @NotBlank(message = "MoodysRating is mandatory")
 	@Column(name = "moodysRating")
@@ -23,6 +24,7 @@ public class Rating {
 	@Column(name = "fitchRating")
     private String fitchRating;
 	
+    @NotNull(message = "must not be null")
 	@Column(name = "orderNumber")
     private Integer order;
     
@@ -33,10 +35,10 @@ public class Rating {
         this.fitchRating = fitchRating;
         this.order = order;
     }
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getMoodysRating() {

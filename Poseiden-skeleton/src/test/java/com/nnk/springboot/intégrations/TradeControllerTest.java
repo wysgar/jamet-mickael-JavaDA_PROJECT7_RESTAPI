@@ -74,7 +74,7 @@ public class TradeControllerTest {
 
     @Test
     void testShowUpdateForm() throws Exception {
-        Trade trade = new Trade("Trade 1", "trade");
+        Trade trade = new Trade("Trade 1", "trade", 1.0);
         when(tradeService.findById(1)).thenReturn(Optional.of(trade));
 
         mockMvc.perform(get("/trade/update/1")
@@ -87,7 +87,7 @@ public class TradeControllerTest {
     
     @Test
     void testUpdateTrade() throws Exception {
-        Trade trade = new Trade("Trade 1", "trade");
+        Trade trade = new Trade("Trade 1", "trade", 1.0);
         trade.setBuyQuantity(3.0);
         trade.setId(1);
         when(tradeService.findById(1)).thenReturn(Optional.of(trade));
