@@ -94,7 +94,9 @@ public class UserControllerTest {
         mockMvc.perform(post("/user/update/1")
                 .with(csrf())
                 .param("username", "john.doe")
-                .param("password", "newPassword123_"))
+                .param("password", "newPassword123_")
+                .param("fullname", "Test User")
+                .param("role", "USER"))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/user/list"));
 

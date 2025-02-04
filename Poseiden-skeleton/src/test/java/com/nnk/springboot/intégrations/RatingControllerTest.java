@@ -65,7 +65,8 @@ public class RatingControllerTest {
                 .with(user("testUser").roles("ADMIN"))
                 .param("moodysRating", "A1")
                 .param("sandPRating", "A+")
-                .param("fitchRating", "A"))
+                .param("fitchRating", "A")
+                .param("order", "20"))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/rating/list"));
 
@@ -96,7 +97,7 @@ public class RatingControllerTest {
                 .param("moodysRating", "New Moodys Rating")
                 .param("sandPRating", "New Sand PRating")
                 .param("fitchRating", "New Fitch Rating")
-                .param("orderNumber", "20"))
+                .param("order", "20"))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/rating/list"));
 

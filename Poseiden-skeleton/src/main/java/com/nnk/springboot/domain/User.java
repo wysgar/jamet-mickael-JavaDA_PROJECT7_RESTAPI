@@ -13,6 +13,7 @@ import com.nnk.springboot.config.ValidPassword;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
+@SuppressWarnings("serial")
 @Entity
 @Table(name = "users")
 public class User implements UserDetails {

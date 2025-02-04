@@ -2,6 +2,7 @@
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = &quot;rating&quot;)
@@ -9,7 +10,7 @@ public class Rating {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = &quot;Id&quot;)
-    private int id;
+    private Integer id;
 
     @NotBlank(message = &quot;MoodysRating is mandatory&quot;)
 	@Column(name = &quot;moodysRating&quot;)
@@ -23,45 +24,46 @@ public class Rating {
 	@Column(name = &quot;fitchRating&quot;)
     private String fitchRating;
 	
+    @NotNull(message = &quot;must not be null&quot;)
 	@Column(name = &quot;orderNumber&quot;)
     private Integer order;
     
-<span class="fc" id="L29">    public Rating() {}</span>
-<span class="fc" id="L30">    public Rating(String moodysRating, String sandPRating, String fitchRating, Integer order) {</span>
-<span class="fc" id="L31">        this.moodysRating = moodysRating;</span>
-<span class="fc" id="L32">        this.sandPRating = sandPRating;</span>
-<span class="fc" id="L33">        this.fitchRating = fitchRating;</span>
-<span class="fc" id="L34">        this.order = order;</span>
-<span class="fc" id="L35">    }</span>
-	public int getId() {
-<span class="fc" id="L37">		return id;</span>
+<span class="fc" id="L31">    public Rating() {}</span>
+<span class="fc" id="L32">    public Rating(String moodysRating, String sandPRating, String fitchRating, Integer order) {</span>
+<span class="fc" id="L33">        this.moodysRating = moodysRating;</span>
+<span class="fc" id="L34">        this.sandPRating = sandPRating;</span>
+<span class="fc" id="L35">        this.fitchRating = fitchRating;</span>
+<span class="fc" id="L36">        this.order = order;</span>
+<span class="fc" id="L37">    }</span>
+	public Integer getId() {
+<span class="fc" id="L39">		return id;</span>
 	}
-	public void setId(int id) {
-<span class="fc" id="L40">		this.id = id;</span>
-<span class="fc" id="L41">	}</span>
+	public void setId(Integer id) {
+<span class="fc" id="L42">		this.id = id;</span>
+<span class="fc" id="L43">	}</span>
 	public String getMoodysRating() {
-<span class="fc" id="L43">		return moodysRating;</span>
+<span class="fc" id="L45">		return moodysRating;</span>
 	}
 	public void setMoodysRating(String moodysRating) {
-<span class="fc" id="L46">		this.moodysRating = moodysRating;</span>
-<span class="fc" id="L47">	}</span>
+<span class="fc" id="L48">		this.moodysRating = moodysRating;</span>
+<span class="fc" id="L49">	}</span>
 	public String getSandPRating() {
-<span class="fc" id="L49">		return sandPRating;</span>
+<span class="fc" id="L51">		return sandPRating;</span>
 	}
 	public void setSandPRating(String sandPRating) {
-<span class="fc" id="L52">		this.sandPRating = sandPRating;</span>
-<span class="fc" id="L53">	}</span>
+<span class="fc" id="L54">		this.sandPRating = sandPRating;</span>
+<span class="fc" id="L55">	}</span>
 	public String getFitchRating() {
-<span class="fc" id="L55">		return fitchRating;</span>
+<span class="fc" id="L57">		return fitchRating;</span>
 	}
 	public void setFitchRating(String fitchRating) {
-<span class="fc" id="L58">		this.fitchRating = fitchRating;</span>
-<span class="fc" id="L59">	}</span>
+<span class="fc" id="L60">		this.fitchRating = fitchRating;</span>
+<span class="fc" id="L61">	}</span>
 	public Integer getOrder() {
-<span class="fc" id="L61">		return order;</span>
+<span class="fc" id="L63">		return order;</span>
 	}
 	public void setOrder(Integer order) {
-<span class="fc" id="L64">		this.order = order;</span>
-<span class="fc" id="L65">	}</span>
+<span class="fc" id="L66">		this.order = order;</span>
+<span class="fc" id="L67">	}</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>
