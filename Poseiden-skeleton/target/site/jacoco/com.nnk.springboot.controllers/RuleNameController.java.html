@@ -38,38 +38,35 @@ import jakarta.validation.Valid;
     public String validate(@Valid RuleName ruleName, BindingResult result, Model model) {
 <span class="pc bpc" id="L39" title="1 of 2 branches missed.">    	if (!result.hasErrors()) {</span>
 <span class="fc" id="L40">    		ruleNameService.save(ruleName);</span>
-<span class="fc" id="L41">            model.addAttribute(&quot;ruleNames&quot;, ruleNameService.findAll());</span>
-<span class="fc" id="L42">            return &quot;redirect:/ruleName/list&quot;;</span>
+<span class="fc" id="L41">            return &quot;redirect:/ruleName/list&quot;;</span>
         }
-<span class="nc" id="L44">        return &quot;ruleName/add&quot;;</span>
+<span class="nc" id="L43">        return &quot;ruleName/add&quot;;</span>
     }
 
     @GetMapping(&quot;/ruleName/update/{id}&quot;)
     public String showUpdateForm(@PathVariable(&quot;id&quot;) Integer id, Model model) {
-<span class="pc" id="L49">    	RuleName ruleName = ruleNameService.findById(id).orElseThrow(() -&gt; new IllegalArgumentException(&quot;Invalid rulename Id:&quot; + id));</span>
-<span class="fc" id="L50">        model.addAttribute(&quot;ruleName&quot;, ruleName);</span>
-<span class="fc" id="L51">        return &quot;ruleName/update&quot;;</span>
+<span class="pc" id="L48">    	RuleName ruleName = ruleNameService.findById(id).orElseThrow(() -&gt; new IllegalArgumentException(&quot;Invalid rulename Id:&quot; + id));</span>
+<span class="fc" id="L49">        model.addAttribute(&quot;ruleName&quot;, ruleName);</span>
+<span class="fc" id="L50">        return &quot;ruleName/update&quot;;</span>
     }
 
     @PostMapping(&quot;/ruleName/update/{id}&quot;)
     public String updateRuleName(@PathVariable(&quot;id&quot;) Integer id, @Valid RuleName ruleName,
                              BindingResult result, Model model) {
-<span class="pc bpc" id="L57" title="1 of 2 branches missed.">    	if (result.hasErrors()) {</span>
-<span class="nc" id="L58">            return &quot;ruleName/update&quot;;</span>
+<span class="pc bpc" id="L56" title="1 of 2 branches missed.">    	if (result.hasErrors()) {</span>
+<span class="nc" id="L57">            return &quot;ruleName/update&quot;;</span>
         }
     	
-<span class="fc" id="L61">    	ruleName.setId(id);</span>
-<span class="fc" id="L62">    	ruleNameService.save(ruleName);</span>
-<span class="fc" id="L63">        model.addAttribute(&quot;ruleNames&quot;, ruleNameService.findAll());</span>
-<span class="fc" id="L64">        return &quot;redirect:/ruleName/list&quot;;</span>
+<span class="fc" id="L60">    	ruleName.setId(id);</span>
+<span class="fc" id="L61">    	ruleNameService.save(ruleName);</span>
+<span class="fc" id="L62">        return &quot;redirect:/ruleName/list&quot;;</span>
     }
 
     @GetMapping(&quot;/ruleName/delete/{id}&quot;)
     public String deleteRuleName(@PathVariable(&quot;id&quot;) Integer id, Model model) {
-<span class="pc" id="L69">    	RuleName ruleName = ruleNameService.findById(id).orElseThrow(() -&gt; new IllegalArgumentException(&quot;Invalid rulename Id:&quot; + id));</span>
-<span class="fc" id="L70">    	ruleNameService.delete(ruleName);</span>
-<span class="fc" id="L71">        model.addAttribute(&quot;ruleNames&quot;, ruleNameService.findAll());</span>
-<span class="fc" id="L72">        return &quot;redirect:/ruleName/list&quot;;</span>
+<span class="pc" id="L67">    	RuleName ruleName = ruleNameService.findById(id).orElseThrow(() -&gt; new IllegalArgumentException(&quot;Invalid rulename Id:&quot; + id));</span>
+<span class="fc" id="L68">    	ruleNameService.delete(ruleName);</span>
+<span class="fc" id="L69">        return &quot;redirect:/ruleName/list&quot;;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

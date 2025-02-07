@@ -38,7 +38,6 @@ public class RatingController {
     public String validate(@Valid Rating rating, BindingResult result, Model model) {
         if (!result.hasErrors()) {
     		ratingService.save(rating);
-            model.addAttribute("ratings", ratingService.findAll());
             return "redirect:/rating/list";
         }
         return "rating/add";
@@ -60,7 +59,6 @@ public class RatingController {
     	
     	rating.setId(id);
     	ratingService.save(rating);
-        model.addAttribute("ratings", ratingService.findAll());
         return "redirect:/rating/list";
     }
 
@@ -68,7 +66,6 @@ public class RatingController {
     public String deleteRating(@PathVariable("id") Integer id, Model model) {
     	Rating rating = ratingService.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid rating Id:" + id));
         ratingService.delete(rating);
-        model.addAttribute("ratings", ratingService.findAll());
         return "redirect:/rating/list";
     }
 }

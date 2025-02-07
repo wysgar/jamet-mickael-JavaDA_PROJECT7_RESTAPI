@@ -14,6 +14,10 @@
 		</div>
 	
 		<div class="row">
+			<div th:if="${errorMessage}" class="alert alert-danger">
+			    <p th:text="${errorMessage}"></p>
+			</div>
+			
 			<form action="#" th:action="@{/app/login}" method="post" class="form-horizontal" style="width: 100%">
 				<div class="form-group">
 					<label for="username" class="col-sm-2 control-label">Username</label>

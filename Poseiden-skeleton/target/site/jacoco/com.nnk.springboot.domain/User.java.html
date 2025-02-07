@@ -13,6 +13,10 @@ import com.nnk.springboot.config.ValidPassword;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
+/**
+ * Entity class representing a user in the system.
+ * Implements {@link UserDetails} for integration with Spring Security.
+ */
 @SuppressWarnings(&quot;serial&quot;)
 @Entity
 @Table(name = &quot;users&quot;)
@@ -38,78 +42,96 @@ public class User implements UserDetails {
     @Column(name = &quot;role&quot;)
     private String role;
     
-<span class="fc" id="L41">    public User() {}</span>
-<span class="fc" id="L42">    public User(String username, String password) {</span>
-<span class="fc" id="L43">    	this.username = username;</span>
-<span class="fc" id="L44">    	this.password = password;</span>
-<span class="fc" id="L45">    }</span>
+<span class="fc" id="L45">    public User() {}</span>
+<span class="fc" id="L46">    public User(String username, String password) {</span>
+<span class="fc" id="L47">    	this.username = username;</span>
+<span class="fc" id="L48">    	this.password = password;</span>
+<span class="fc" id="L49">    }</span>
 
     public Integer getId() {
-<span class="fc" id="L48">        return id;</span>
+<span class="fc" id="L52">        return id;</span>
     }
 
     public void setId(Integer id) {
-<span class="fc" id="L52">        this.id = id;</span>
-<span class="fc" id="L53">    }</span>
+<span class="fc" id="L56">        this.id = id;</span>
+<span class="fc" id="L57">    }</span>
 
     public String getUsername() {
-<span class="fc" id="L56">        return username;</span>
+<span class="fc" id="L60">        return username;</span>
     }
 
     public void setUsername(String username) {
-<span class="fc" id="L60">        this.username = username;</span>
-<span class="fc" id="L61">    }</span>
+<span class="fc" id="L64">        this.username = username;</span>
+<span class="fc" id="L65">    }</span>
 
     public String getPassword() {
-<span class="fc" id="L64">        return password;</span>
+<span class="fc" id="L68">        return password;</span>
     }
 
     public void setPassword(String password) {
-<span class="fc" id="L68">        this.password = password;</span>
-<span class="fc" id="L69">    }</span>
+<span class="fc" id="L72">        this.password = password;</span>
+<span class="fc" id="L73">    }</span>
 
     public String getFullname() {
-<span class="fc" id="L72">        return fullname;</span>
+<span class="fc" id="L76">        return fullname;</span>
     }
 
     public void setFullname(String fullname) {
-<span class="fc" id="L76">        this.fullname = fullname;</span>
-<span class="fc" id="L77">    }</span>
+<span class="fc" id="L80">        this.fullname = fullname;</span>
+<span class="fc" id="L81">    }</span>
 
     public String getRole() {
-<span class="fc" id="L80">        return role;</span>
+<span class="fc" id="L84">        return role;</span>
     }
 
     public void setRole(String role) {
-<span class="fc" id="L84">        this.role = role;</span>
-<span class="fc" id="L85">    }</span>
+<span class="fc" id="L88">        this.role = role;</span>
+<span class="fc" id="L89">    }</span>
 
+    /**
+     * Returns the authorities granted to the user.
+     * This method is used by Spring Security.
+     *
+     * @return a collection of {@link GrantedAuthority} objects
+     */
 	@Override
 	public Collection&lt;? extends GrantedAuthority&gt; getAuthorities() {
-<span class="fc" id="L89">		SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority(this.role);</span>
-<span class="fc" id="L90">		List&lt;SimpleGrantedAuthority&gt; autority = new ArrayList&lt;&gt;();</span>
-<span class="fc" id="L91">		autority.add(simpleGrantedAuthority);</span>
-<span class="fc" id="L92">		return autority;</span>
+<span class="fc" id="L99">		SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority(this.role);</span>
+<span class="fc" id="L100">		List&lt;SimpleGrantedAuthority&gt; autority = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L101">		autority.add(simpleGrantedAuthority);</span>
+<span class="fc" id="L102">		return autority;</span>
 	}
 
+	/**
+     * Indicates whether the user's account has expired.
+     */
 	@Override
 	public boolean isAccountNonExpired() {
-<span class="fc" id="L97">		return true;</span>
+<span class="fc" id="L110">		return true;</span>
 	}
 
+	/**
+     * Indicates whether the user is locked or unlocked.
+     */
 	@Override
 	public boolean isAccountNonLocked() {
-<span class="fc" id="L102">		return true;</span>
+<span class="fc" id="L118">		return true;</span>
 	}
 
+	/**
+     * Indicates whether the user's credentials (password) have expired.
+     */
 	@Override
 	public boolean isCredentialsNonExpired() {
-<span class="fc" id="L107">		return true;</span>
+<span class="fc" id="L126">		return true;</span>
 	}
 
+	/**
+     * Indicates whether the user is enabled or disabled.
+     */
 	@Override
 	public boolean isEnabled() {
-<span class="fc" id="L112">		return true;</span>
+<span class="fc" id="L134">		return true;</span>
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

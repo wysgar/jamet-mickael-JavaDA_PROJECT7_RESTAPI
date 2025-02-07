@@ -40,7 +40,6 @@ public class BidListController {
     	if (!result.hasErrors()) {
     		bid.setCreationDate(new Date());
     		bidListService.save(bid);
-            model.addAttribute("bidLists", bidListService.findAll());
             return "redirect:/bidList/list";
         }
         return "bidList/add";
@@ -62,7 +61,6 @@ public class BidListController {
     	
     	bidList.setId(id);
     	bidListService.save(bidList);
-        model.addAttribute("bidLists", bidListService.findAll());
         return "redirect:/bidList/list";
     }
 
@@ -70,7 +68,6 @@ public class BidListController {
     public String deleteBid(@PathVariable("id") Integer id, Model model) {
     	BidList bidList = bidListService.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid bid Id:" + id));
     	bidListService.delete(bidList);
-        model.addAttribute("bidLists", bidListService.findAll());
         return "redirect:/bidList/list";
     }
 }

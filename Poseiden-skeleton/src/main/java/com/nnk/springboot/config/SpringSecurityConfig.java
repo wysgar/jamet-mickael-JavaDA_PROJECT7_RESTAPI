@@ -1,6 +1,7 @@
 package com.nnk.springboot.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -10,6 +11,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+import com.nnk.springboot.domain.User;
+import com.nnk.springboot.repositories.UserRepository;
 import com.nnk.springboot.services.UserService;
 
 /**
@@ -41,6 +44,7 @@ public class SpringSecurityConfig {
 		.formLogin(form -> form
 				.loginPage("/app/login")
                 .defaultSuccessUrl("/bidList/list", true)
+                .failureUrl("/app/login?error=true")
 				.permitAll())
 		.logout((logout) -> logout
 				.logoutUrl("/app-logout").logoutSuccessUrl("/login"));
@@ -72,4 +76,31 @@ public class SpringSecurityConfig {
 		authenticationManagerBuilder.userDetailsService(userService).passwordEncoder(bCryptPasswordEncoder);
 		return authenticationManagerBuilder.build();
 	}
+	
+	@Bean
+	public CommandLineRunner initDatabase(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder) {
+	    return args -> {
+	        if (userRepository.count() == 0) {
+	            User admin = new User();
+	            admin.setUsername("admin");
+	            admin.setFullname("Administrator");
+	            admin.setPassword(passwordEncoder.encode("admin"));
+	            admin.setRole("ADMIN");
+
+	            User user = new User();
+	            user.setUsername("user");
+	            user.setFullname("Regular User");
+	            user.setPassword(passwordEncoder.encode("user"));
+	            user.setRole("USER");
+
+	            userRepository.save(admin);
+	            userRepository.save(user);
+
+	            System.out.println("Admin and User accounts have been created.");
+	        } else {
+	            System.out.println("Users already exist, skipping initialization.");
+	        }
+	    };
+	}
+
 }

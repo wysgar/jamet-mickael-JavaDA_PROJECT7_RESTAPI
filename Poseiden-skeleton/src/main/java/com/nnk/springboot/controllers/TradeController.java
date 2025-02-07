@@ -40,7 +40,6 @@ public class TradeController {
     	if (!result.hasErrors()) {
     		trade.setCreationDate(new Date());
     		tradeService.save(trade);
-            model.addAttribute("trades", tradeService.findAll());
             return "redirect:/trade/list";
         }
         return "trade/add";
@@ -62,7 +61,6 @@ public class TradeController {
     	
     	trade.setId(id);
     	tradeService.save(trade);
-        model.addAttribute("trades", tradeService.findAll());
         return "redirect:/trade/list";
     }
 
@@ -70,7 +68,6 @@ public class TradeController {
     public String deleteTrade(@PathVariable("id") Integer id, Model model) {
     	Trade trade = tradeService.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid trade Id:" + id));
     	tradeService.delete(trade);
-        model.addAttribute("trades", tradeService.findAll());
         return "redirect:/trade/list";
     }
 }

@@ -40,7 +40,6 @@ public class CurveController {
     	if (!result.hasErrors()) {
     		curvePoint.setCreationDate(new Date());
             curvePointService.save(curvePoint);
-            model.addAttribute("curvePoints", curvePointService.findAll());
             return "redirect:/curvePoint/list";
         }
         return "curvePoint/add";
@@ -62,7 +61,6 @@ public class CurveController {
     	
     	curvePoint.setId(id);
         curvePointService.save(curvePoint);
-        model.addAttribute("curvePoints", curvePointService.findAll());
         return "redirect:/curvePoint/list";
     }
 
@@ -70,7 +68,6 @@ public class CurveController {
     public String deleteBid(@PathVariable("id") Integer id, Model model) {
     	CurvePoint curvePoint = curvePointService.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid crurvePoint Id:" + id));
         curvePointService.delete(curvePoint);
-        model.addAttribute("curvePoints", curvePointService.findAll());
         return "redirect:/curvePoint/list";
     }
 }

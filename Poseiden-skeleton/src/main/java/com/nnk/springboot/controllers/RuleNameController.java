@@ -38,7 +38,6 @@ public class RuleNameController {
     public String validate(@Valid RuleName ruleName, BindingResult result, Model model) {
     	if (!result.hasErrors()) {
     		ruleNameService.save(ruleName);
-            model.addAttribute("ruleNames", ruleNameService.findAll());
             return "redirect:/ruleName/list";
         }
         return "ruleName/add";
@@ -60,7 +59,6 @@ public class RuleNameController {
     	
     	ruleName.setId(id);
     	ruleNameService.save(ruleName);
-        model.addAttribute("ruleNames", ruleNameService.findAll());
         return "redirect:/ruleName/list";
     }
 
@@ -68,7 +66,6 @@ public class RuleNameController {
     public String deleteRuleName(@PathVariable("id") Integer id, Model model) {
     	RuleName ruleName = ruleNameService.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid rulename Id:" + id));
     	ruleNameService.delete(ruleName);
-        model.addAttribute("ruleNames", ruleNameService.findAll());
         return "redirect:/ruleName/list";
     }
 }

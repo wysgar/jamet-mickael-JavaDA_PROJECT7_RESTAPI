@@ -4,6 +4,7 @@ import com.nnk.springboot.domain.BidList;
 import com.nnk.springboot.services.BidListService;
 
 import java.security.Principal;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,50 +18,49 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import jakarta.validation.Valid;
 
 @Controller
-<span class="fc" id="L20">public class BidListController {</span>
+<span class="fc" id="L21">public class BidListController {</span>
 	@Autowired
 	private BidListService bidListService;
 
     @RequestMapping(&quot;/bidList/list&quot;)
     public String home(Model model, Principal principal)
     {
-<span class="fc" id="L27">    	model.addAttribute(&quot;bidLists&quot;, bidListService.findAll());</span>
-<span class="fc" id="L28">    	model.addAttribute(&quot;remoteUser&quot;, principal.getName());</span>
-<span class="fc" id="L29">        return &quot;bidList/list&quot;;</span>
+<span class="fc" id="L28">    	model.addAttribute(&quot;bidLists&quot;, bidListService.findAll());</span>
+<span class="fc" id="L29">    	model.addAttribute(&quot;remoteUser&quot;, principal.getName());</span>
+<span class="fc" id="L30">        return &quot;bidList/list&quot;;</span>
     }
 
     @GetMapping(&quot;/bidList/add&quot;)
     public String addBidForm(BidList bid) {
-<span class="fc" id="L34">        return &quot;bidList/add&quot;;</span>
+<span class="fc" id="L35">        return &quot;bidList/add&quot;;</span>
     }
 
     @PostMapping(&quot;/bidList/validate&quot;)
     public String validate(@Valid BidList bid, BindingResult result, Model model) {
-<span class="pc bpc" id="L39" title="1 of 2 branches missed.">    	if (!result.hasErrors()) {</span>
-<span class="fc" id="L40">    		bidListService.save(bid);</span>
-<span class="fc" id="L41">            model.addAttribute(&quot;bidLists&quot;, bidListService.findAll());</span>
-<span class="fc" id="L42">            return &quot;redirect:/bidList/list&quot;;</span>
+<span class="pc bpc" id="L40" title="1 of 2 branches missed.">    	if (!result.hasErrors()) {</span>
+<span class="fc" id="L41">    		bid.setCreationDate(new Date());</span>
+<span class="fc" id="L42">    		bidListService.save(bid);</span>
+<span class="fc" id="L43">            return &quot;redirect:/bidList/list&quot;;</span>
         }
-<span class="nc" id="L44">        return &quot;bidList/add&quot;;</span>
+<span class="nc" id="L45">        return &quot;bidList/add&quot;;</span>
     }
 
     @GetMapping(&quot;/bidList/update/{id}&quot;)
     public String showUpdateForm(@PathVariable(&quot;id&quot;) Integer id, Model model) {
-<span class="pc" id="L49">    	BidList bidList = bidListService.findById(id).orElseThrow(() -&gt; new IllegalArgumentException(&quot;Invalid bid Id:&quot; + id));</span>
-<span class="fc" id="L50">        model.addAttribute(&quot;bidList&quot;, bidList);</span>
-<span class="fc" id="L51">        return &quot;bidList/update&quot;;</span>
+<span class="pc" id="L50">    	BidList bidList = bidListService.findById(id).orElseThrow(() -&gt; new IllegalArgumentException(&quot;Invalid bid Id:&quot; + id));</span>
+<span class="fc" id="L51">        model.addAttribute(&quot;bidList&quot;, bidList);</span>
+<span class="fc" id="L52">        return &quot;bidList/update&quot;;</span>
     }
 
     @PostMapping(&quot;/bidList/update/{id}&quot;)
     public String updateBid(@PathVariable(&quot;id&quot;) Integer id, @Valid BidList bidList,
                              BindingResult result, Model model) {
-<span class="pc bpc" id="L57" title="1 of 2 branches missed.">    	if (result.hasErrors()) {</span>
-<span class="nc" id="L58">            return &quot;bidList/update&quot;;</span>
+<span class="pc bpc" id="L58" title="1 of 2 branches missed.">    	if (result.hasErrors()) {</span>
+<span class="nc" id="L59">            return &quot;bidList/update&quot;;</span>
         }
     	
-<span class="fc" id="L61">    	bidList.setId(id);</span>
-<span class="fc" id="L62">    	bidListService.save(bidList);</span>
-<span class="fc" id="L63">        model.addAttribute(&quot;bidLists&quot;, bidListService.findAll());</span>
+<span class="fc" id="L62">    	bidList.setId(id);</span>
+<span class="fc" id="L63">    	bidListService.save(bidList);</span>
 <span class="fc" id="L64">        return &quot;redirect:/bidList/list&quot;;</span>
     }
 
@@ -68,8 +68,7 @@ import jakarta.validation.Valid;
     public String deleteBid(@PathVariable(&quot;id&quot;) Integer id, Model model) {
 <span class="pc" id="L69">    	BidList bidList = bidListService.findById(id).orElseThrow(() -&gt; new IllegalArgumentException(&quot;Invalid bid Id:&quot; + id));</span>
 <span class="fc" id="L70">    	bidListService.delete(bidList);</span>
-<span class="fc" id="L71">        model.addAttribute(&quot;bidLists&quot;, bidListService.findAll());</span>
-<span class="fc" id="L72">        return &quot;redirect:/bidList/list&quot;;</span>
+<span class="fc" id="L71">        return &quot;redirect:/bidList/list&quot;;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>
