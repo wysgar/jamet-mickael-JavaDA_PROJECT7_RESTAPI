@@ -7,7 +7,7 @@
 4. Bootstrap v.4.3.1
 
 ## Information
-When launching the application, if there is no user in the database, two users will be created by default.
+When launching the application, if there is no user in the database, two users will be created by default. 
 username: admin password: admin
 username: user password: user
 
